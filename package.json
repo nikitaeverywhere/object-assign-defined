@@ -1,0 +1,38 @@
+{
+  "name": "object-assign-defined",
+  "version": "1.0.0",
+  "description": "A simple module that works exactly as Object.assign, but skips assigning undefined values.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZitRos/object-assign-defined.git"
+  },
+  "keywords": [
+    "javascript",
+    "object",
+    "assign",
+    "defined",
+    "properties",
+    "only",
+    "undefined"
+  ],
+  "author": {
+    "name": "ZitRo",
+    "url": "nikita.tk"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZitRos/object-assign-defined/issues"
+  },
+  "homepage": "https://github.com/ZitRos/object-assign-defined#readme",
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "deep-is": "^0.1.3"
+  }
+}
