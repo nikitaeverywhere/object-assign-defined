@@ -37,17 +37,17 @@ import equals from "deep-is";
 const result = objectAssignDefined({
     "I": undefined
 }, {
-    "LIKE": undefined
+    "LIKE": 2
 }, {
-    "TRAINS": undefined
+    "TRAINS": 3
 });
 
 console.log(
-    equals(result, { "I": undefined }) === true
+    equals(result, { "I": undefined, "LIKE": 2, "TRAINS": 3 }) === true
 ); // outputs "true"
 ```
 
-But you can simply remove them by making assigning properties to an empty object, like this:
+But you can simply filter `undefined` values by assigning properties to an empty object, like this:
 
 ```javascript
 import objectAssignDefined from "object-assign-defined";
@@ -63,4 +63,4 @@ console.log(
 Licence
 -------
 
-[MIT](LICENSE) (c) Nikita Savchenko
+[MIT](LICENSE) © Nikita Savchenko
