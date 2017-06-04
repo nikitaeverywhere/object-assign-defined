@@ -4,7 +4,7 @@
  * Works as Object.assign do, but skips assigning "undefined" values. Undefined values are kept in
  * target object only.
  * @param {...Object} objects
- * @returns {Object<string, *>}
+ * @returns {Object|*}
  */
 module.exports = function (objects) {
     for (let i = 1; i < arguments.length; ++i) {
