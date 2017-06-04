@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/object-assign-defined.svg)](https://www.npmjs.com/package/object-assign-defined)
 [![License](https://img.shields.io/github/license/zitros/object-assign-defined.svg)](LICENSE)
+[![Build Status](https://travis-ci.org/ZitRos/object-assign-defined.svg?branch=master)](https://travis-ci.org/ZitRos/object-assign-defined)
 
 A tiny, fast and [well-tested](https://github.com/ZitRos/object-assign-defined/blob/master/test.js)
 JavaScript module that works just like `Object.assign`, but skips assigning `undefined` values.

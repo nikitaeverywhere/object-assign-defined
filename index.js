@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Works as Object.assign do, but skips assigning "undefined" values. Undefined values are kept in
  * target object only.
