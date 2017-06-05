@@ -1,6 +1,6 @@
 import test from "ava";
 import equal from "deep-is";
-import objectAssignDefined from "./index.js";
+import objectAssignDefined from ".";
 
 const toString = (object) => JSON.stringify(object);
 
@@ -131,15 +131,21 @@ test(`Does not skip undefined values in source`, (it) => {
 const runTestForNObjects = (it, objects = 250) => {
 
     const randomProps = ["duck", "best", "text", "fest"];
-    const object1 = { test: null, best: 2 };
-    const object2 = { test: 2, rest: 3 };
-    const object3 = { rest: 5, fest: 4, duck: undefined };
-    const object4 = { rest: [1, 2, 3], fest: null, test: 10 };
-    const object5 = { text: "undefined", best: -Infinity, duck: NaN, test: undefined };
-    const rest = Array.from({ length: Math.max(0, objects - 5) }, (e, i) =>
-        ({ [ randomProps[Math.floor(Math.random() * randomProps.length)] ]: Math.random() })
+
+    const args = [
+        { test: null, best: 2 },
+        { test: 2, rest: 3 }
+    ];
+    for (let i = 0; i < objects - 5; ++i) args.push({
+        [ randomProps[Math.floor(Math.random() * randomProps.length)] ]: Math.random()
+    });
+    args.push(
+        { rest: 5, fest: 4, duck: undefined },
+        { rest: [1, 2, 3], fest: null, test: 10 },
+        { text: "undefined", best: -Infinity, duck: NaN, test: undefined }
     );
-    const result = objectAssignDefined(object1, object2, ...rest, object3, object4, object5);
+
+    const result = objectAssignDefined.apply(this, args);
 
     it.is(equal(result, {
         test: 10,
