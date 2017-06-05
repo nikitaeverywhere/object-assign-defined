@@ -2,6 +2,6 @@ language: node_js
 node_js:
   - '8'
   - '7'
-  - '6'
+#  - '6'   # Possibly, node 6-7.7 has a problem with "illegal access error" on a large amount of arguments passed to a function, see https://github.com/node-inspector/node-inspector/issues/864
   - '5'
   - '4'
