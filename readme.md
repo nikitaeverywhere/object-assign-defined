@@ -14,7 +14,6 @@ Import the module and use it like this:
 
 ```javascript
 import objectAssignDefined from "object-assign-defined";
-import equals from "deep-is"; // this module deeply compares if two objects match
 
 const result = objectAssignDefined({
     "I": 1
@@ -24,16 +23,13 @@ const result = objectAssignDefined({
     "TRAINS": undefined
 });
 
-console.log(
-    equals(result, { "I": 1, "LIKE": 2 }) === true
-); // outputs "true"
+// result is { "I": 1, "LIKE": 2 }
 ```
 
 Note that `undefined` values in source (first argument) won't be vanished:
 
 ```javascript
 import objectAssignDefined from "object-assign-defined";
-import equals from "deep-is";
 
 const result = objectAssignDefined({
     "I": undefined
@@ -43,22 +39,17 @@ const result = objectAssignDefined({
     "TRAINS": 3
 });
 
-console.log(
-    equals(result, { "I": undefined, "LIKE": 2, "TRAINS": 3 }) === true
-); // outputs "true"
+// result is { "I": undefined, "LIKE": 2, "TRAINS": 3 }
 ```
 
 But you can simply filter `undefined` values by assigning properties to an empty object, like this:
 
 ```javascript
 import objectAssignDefined from "object-assign-defined";
-import equals from "deep-is";
 
 const result = objectAssignDefined({}, { "I": undefined });
 
-console.log(
-    equals(result, {}) === true
-); // outputs "true"
+// result is {}
 ```
 
 Licence

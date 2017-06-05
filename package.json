@@ -1,6 +1,6 @@
 {
   "name": "object-assign-defined",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple module that works exactly as Object.assign, but skips assigning undefined values.",
   "main": "index.js",
   "engines": {

@@ -4,7 +4,7 @@ import objectAssignDefined from "./index.js";
 
 const toString = (object) => JSON.stringify(object);
 
-test(`Works with single argument`, (it) => {
+test(`Can handle a single argument`, (it) => {
 
     const object = { test: 1 };
     const result = objectAssignDefined(object);
@@ -13,7 +13,7 @@ test(`Works with single argument`, (it) => {
 
 });
 
-test(`Works with two arguments`, (it) => {
+test(`Can handle two objects`, (it) => {
 
     const object1 = { test: 1 };
     const object2 = { test: 2 };
@@ -48,7 +48,7 @@ test(`Correctly assigns properties and keeps the same object reference`, (it) =>
 
 });
 
-test(`Works with 3 objects`, (it) => {
+test(`Can handle 3 objects`, (it) => {
 
     const object1 = { test: 1, best: 2 };
     const object2 = { test: 2, rest: 3 };
@@ -118,7 +118,7 @@ test(`Really skips undefined values`, (it) => {
 
 });
 
-test(`Must not skip undefined values in source`, (it) => {
+test(`Does not skip undefined values in source`, (it) => {
 
     const object1 = { test: undefined };
     const object2 = { best: 1 };
@@ -128,16 +128,15 @@ test(`Must not skip undefined values in source`, (it) => {
 
 });
 
-test(`Works with 250 objects`, (it) => {
+const runTestForNObjects = (it, objects = 250) => {
 
-    const objects = 250;
     const randomProps = ["duck", "best", "text", "fest"];
     const object1 = { test: null, best: 2 };
     const object2 = { test: 2, rest: 3 };
     const object3 = { rest: 5, fest: 4, duck: undefined };
     const object4 = { rest: [1, 2, 3], fest: null, test: 10 };
     const object5 = { text: "undefined", best: -Infinity, duck: NaN, test: undefined };
-    const rest = Array.from({ length: objects }, (e, i) =>
+    const rest = Array.from({ length: Math.max(0, objects - 5) }, (e, i) =>
         ({ [ randomProps[Math.floor(Math.random() * randomProps.length)] ]: Math.random() })
     );
     const result = objectAssignDefined(object1, object2, ...rest, object3, object4, object5);
@@ -151,7 +150,9 @@ test(`Works with 250 objects`, (it) => {
         duck: NaN
     }), true);
 
-});
+};
+
+test(`Can handle 250 objects`, (it) => runTestForNObjects(it, 250));
 
 test(`Does not fail on or copy null objects`, (it) => {
 
@@ -184,3 +185,5 @@ test(`Does not call or change functions`, (it) => {
     it.is(result[`test`](), 5);
 
 });
+
+test(`Can handle 100000 objects`, (it) => runTestForNObjects(it, 100000));
